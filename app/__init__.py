@@ -14,7 +14,6 @@ from app import routes, apihandler  # noqa: e402
 
 if server.config['ON_HEROKU']:
     logger.info("running on HEROKU")
-    server.run(host="0.0.0.0", port=os.environ.get('PORT', 5000))
 else:
     logger.info("running on local + longpolling")
     bot.remove_webhook()
