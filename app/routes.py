@@ -12,5 +12,5 @@ def get_message():
 @server.route("/")
 def webhook_index():
     bot.remove_webhook()
-    bot.set_webhook(url="https://caterina-bot.herokuapp.com//{}".format(server.config['BOT_TOKEN']))
+    bot.set_webhook(url="https://ps5-instock-bot.herokuapp.com//{}".format(server.config['BOT_TOKEN']))
     return "!", 200
