@@ -1,0 +1,33 @@
+{
+  "name": "PS5 in-stock Bot",
+  "description": "Telegram bot, which tells whether PS5 is in stock.",
+  "keywords": [
+    "PS5",
+    "Telegram",
+    "bot"
+  ],
+  "repository": "https://github.com/omelched/ps5-instock-bot",
+  "env": {
+    "ON_HEROKU": {
+      "description": "Property, which defines if app is launched on HEROKU.",
+      "value": True,
+      "required": True
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "addons": [
+    "heroku-postgresql"  
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ]
+}
+  
+}
