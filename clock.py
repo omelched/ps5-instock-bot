@@ -27,7 +27,7 @@ def timed_job():
             return traceback.format_exc(), 500
 
         for user in users:
-            bot.send_notification(user.chat_id, 'Test notification')
+            bot.send_notification(user.chat_id, payload)
 
 
 sched.start()
