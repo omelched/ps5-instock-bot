@@ -17,7 +17,8 @@ def get_message():
 @server.route("/")
 def webhook_index():
     bot.remove_webhook()
-    bot.set_webhook(url="https://ps5-instock-bot.herokuapp.com//{}".format(server.config['BOT_TOKEN']))
+    bot.set_webhook(url="https://{}.herokuapp.com//{}".format(server.config['BOT_TOKEN'],
+                                                              server.config['HEROKU_APP_NAME']))
     return "!", 200
 
 
