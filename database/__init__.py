@@ -4,9 +4,9 @@ from flask_migrate import Migrate
 from app import server
 
 try:
-    _ = server.config['SQLALCHEMY_DATABASE_URI']
+    _ = server.config['DATABASE_URL']
 except KeyError:
-    server.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../test.db'
+    server.config['SQLALCHEMY_DATABASE_URI'] = server.config['DATABASE_URL']
 
 try:
     _ = server.config['SQLALCHEMY_TRACK_MODIFICATIONS']
