@@ -24,7 +24,6 @@ def webhook_index():
 
 @server.route("/notify/")
 def notify_all_users():
-
     try:
         users = BotUser.query.all()
     except Exception as e:
