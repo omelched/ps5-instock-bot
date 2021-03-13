@@ -26,8 +26,6 @@ class PS5Bot(telebot.TeleBot):
         return True
 
 
-
-
 bot = PS5Bot(_TOKEN)
 
 from bot import apihandler, routes  # noqa

@@ -32,7 +32,6 @@ def notify_all_users():
         return traceback.format_exc(), 500
 
     for user in users:
-        if not bot.send_notification(user.chat_id, 'Test notification'):
-            return 'no', 500
+        bot.send_message(user.chat_id, 'Test notification')
 
     return "Test notification", 200

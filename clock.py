@@ -1,8 +1,12 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
 import requests
+import traceback
 
 from app import server
 from bot import bot
+from database import BotUser
+from utils import logger
+
 
 sched = BlockingScheduler()
 
@@ -15,7 +19,15 @@ def timed_job():
                if r.json()['data']['shops'][shop]['normal_info']['available'] is True]
 
     if payload:
-        requests.get('https://{}.herokuapp.com/notify/'.format(server.config['HEROKU_APP_NAME']))
+        try:
+            users = BotUser.query.all()
+        except Exception as e:
+            logger.error(e)
+            logger.error(traceback.format_exc())
+            return traceback.format_exc(), 500
+
+        for user in users:
+            bot.send_notification(user.chat_id, 'Test notification')
 
 
 sched.start()
