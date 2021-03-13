@@ -18,4 +18,4 @@ except KeyError:
 db = SQLAlchemy(server)
 migrate = Migrate(server, db)
 
-from database.models import User  # noqa: e402
+from database.models import BotUser  # noqa: e402

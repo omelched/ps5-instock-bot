@@ -4,7 +4,7 @@ import traceback
 
 from app import server
 from bot import bot, _TOKEN
-from database import User
+from database import BotUser
 from utils import logger
 
 
@@ -26,7 +26,7 @@ def webhook_index():
 def notify_all_users():
 
     try:
-        users = User.query.all()
+        users = BotUser.query.all()
     except Exception as e:
         logger.error(e)
         logger.error(traceback.format_exc())

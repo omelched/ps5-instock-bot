@@ -2,17 +2,17 @@ from telebot.types import Message  # noqa
 import traceback
 
 from bot import bot
-from database import User
+from database import BotUser
 from utils import logger
 
 
 @bot.message_handler(commands=['addme'])
 def add_me(message):
     try:
-        result = User.create_new(message.from_user.id,
-                                 message.from_user.first_name,
-                                 message.chat.id,
-                                 message.from_user.username)
+        result = BotUser.create_new(message.from_user.id,
+                                    message.from_user.first_name,
+                                    message.chat.id,
+                                    message.from_user.username)
     except Exception as e:
         bot.reply_to(message, f"Oops, there was an error")
         logger.error(e)

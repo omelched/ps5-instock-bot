@@ -5,8 +5,8 @@ from sqlalchemy.exc import IntegrityError
 from database import db
 
 
-class User(db.Model):
-    __tablename__ = 'user'
+class BotUser(db.Model):
+    __tablename__ = 'bot_user'
 
     _id = db.Column(db.Integer, primary_key=True)  # noqa
     first_name = db.Column(db.String(100), nullable=False)  # noqa
@@ -19,7 +19,7 @@ class User(db.Model):
 
     @classmethod
     def create_new(cls, _id, fn, ci, un=None, rd=None):
-        new_user = User(_id=_id, first_name=fn, username=un, registration_date=rd, chat_id=ci)
+        new_user = BotUser(_id=_id, first_name=fn, username=un, registration_date=rd, chat_id=ci)
         try:
             db.session.add(new_user)
             db.session.commit()
