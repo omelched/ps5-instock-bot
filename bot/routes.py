@@ -1,8 +1,11 @@
 from flask import request
 import telebot  # noqa
+import traceback
 
 from app import server
 from bot import bot, _TOKEN
+from database import User
+from utils import logger
 
 
 @server.route('/' + _TOKEN, methods=['POST'])
@@ -16,3 +19,19 @@ def webhook_index():
     bot.remove_webhook()
     bot.set_webhook(url="https://ps5-instock-bot.herokuapp.com//{}".format(server.config['BOT_TOKEN']))
     return "!", 200
+
+
+@server.route("/notify/")
+def notify_all_users():
+
+    try:
+        users = User.query.all()
+    except Exception as e:
+        logger.error(e)
+        logger.error(traceback.format_exc())
+        return traceback.format_exc(), 500
+
+    for user in users:
+        bot.send_message(user.chat_id, 'Test notification')
+
+    return "Test notification", 200

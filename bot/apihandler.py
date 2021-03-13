@@ -9,7 +9,10 @@ from utils import logger
 @bot.message_handler(commands=['addme'])
 def add_me(message):
     try:
-        result = User.create_new(message.from_user.id, message.from_user.first_name, message.from_user.username)
+        result = User.create_new(message.from_user.id,
+                                 message.from_user.first_name,
+                                 message.chat.id,
+                                 message.from_user.username)
     except Exception as e:
         bot.reply_to(message, f"Oops, there was an error")
         logger.error(e)
@@ -28,5 +31,5 @@ def delete_me(message):
 
 
 @bot.message_handler(func=lambda message: True, content_types=['text'])
-def echo_all(message: Message):
+def echo(message: Message):
     bot.reply_to(message, message.text)
