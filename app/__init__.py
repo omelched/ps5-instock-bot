@@ -7,5 +7,5 @@ server.config.from_object(config)
 
 try:
     _ = server.config['HEROKU_APP_NAME']
-except KeyError
+except KeyError:
     server.config['HEROKU_APP_NAME'] = 'ps5-instock-bot'
