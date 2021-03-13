@@ -10,8 +10,8 @@
   "env": {
     "ON_HEROKU": {
       "description": "Property, which defines if app is launched on HEROKU.",
-      "value": True,
-      "required": True
+      "value": true,
+      "required": true
     }
   },
   "formation": {
@@ -29,5 +29,4 @@
     }
   ]
 }
-  
-}
+

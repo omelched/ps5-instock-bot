@@ -1,9 +1,11 @@
-from app import server, bot
 from flask import request
-import telebot
+import telebot  # noqa
+
+from app import server
+from bot import bot, _TOKEN
 
 
-@server.route('/' + server.config['BOT_TOKEN'], methods=['POST'])
+@server.route('/' + _TOKEN, methods=['POST'])
 def get_message():
     bot.process_new_updates([telebot.types.Update.de_json(request.stream.read().decode("utf-8"))])
     return "!", 200
