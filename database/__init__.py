@@ -8,7 +8,8 @@ try:
     _ = server.config['DATABASE_URL']
     server.config['SQLALCHEMY_DATABASE_URI'] = server.config['DATABASE_URL']
 except KeyError:
-    logger.error('Database URL NOT SET!')
+    logger.error('Database URL NOT SET! Defaulting... ')
+    server.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../test.db'
 
 try:
     _ = server.config['SQLALCHEMY_TRACK_MODIFICATIONS']
