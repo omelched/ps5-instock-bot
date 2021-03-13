@@ -21,7 +21,6 @@ class User(db.Model):
         try:
             db.session.add(new_user)
             db.session.commit()
-
             return True, new_user
         except FlushError as e:
             return False, e

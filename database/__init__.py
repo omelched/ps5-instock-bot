@@ -11,7 +11,7 @@ except KeyError:
 try:
     _ = server.config['SQLALCHEMY_TRACK_MODIFICATIONS']
 except KeyError:
-    server.config['SQLALCHEMY_DATABASE_URI'] = False
+    server.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(server)
 migrate = Migrate(server, db)

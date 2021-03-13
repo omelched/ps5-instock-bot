@@ -1,4 +1,5 @@
 from telebot.types import Message  # noqa
+import traceback
 
 from bot import bot
 from database import User
@@ -12,6 +13,7 @@ def add_me(message):
     except Exception as e:
         bot.reply_to(message, f"Oops, there was an error")
         logger.error(e)
+        logger.error(traceback.format_exc())
         return
 
     if result[0]:
