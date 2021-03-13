@@ -24,7 +24,6 @@ def webhook_index():
 
 @server.route("/notify/")
 def notify_all_users():
-
     try:
         users = BotUser.query.all()
     except Exception as e:
@@ -33,6 +32,7 @@ def notify_all_users():
         return traceback.format_exc(), 500
 
     for user in users:
-        bot.send_message(user.chat_id, 'Test notification')
+        if not bot.send_notification(user.chat_id, 'Test notification'):
+            return 'no', 500
 
     return "Test notification", 200
