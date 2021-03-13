@@ -18,14 +18,11 @@
     "web": {
       "quantity": 1,
       "size": "free"
-    },
-    "clock": {
-      "quantity": 1,
-      "size": "free"
     }
   },
   "addons": [
-    "heroku-postgresql"  
+    "heroku-postgresql",
+    "scheduler"
   ],
   "buildpacks": [
     {
