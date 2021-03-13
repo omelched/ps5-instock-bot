@@ -22,7 +22,7 @@ class PS5Bot(telebot.TeleBot):
         for shop in payload:
             text = text + f'PS5 is available in shop [{shop["name"]}]({shop["link"]})\n\r'
 
-        self.send_message(chat_id, text)
+        self.send_message(chat_id, text, parse_mode='MarkdownV2')
         return True
 
 
