@@ -2,11 +2,13 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
 from app import server
+from utils import logger
 
 try:
     _ = server.config['DATABASE_URL']
-except KeyError:
     server.config['SQLALCHEMY_DATABASE_URI'] = server.config['DATABASE_URL']
+except KeyError:
+    logger.error('Database URL NOT SET!')
 
 try:
     _ = server.config['SQLALCHEMY_TRACK_MODIFICATIONS']
